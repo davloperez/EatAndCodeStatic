@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Blog personal de David López, programador web en Xepient Solutions. Aquí podrás encontrar artículos relacionados con la programación web, herramientas y otras reflexiones.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="David López Pérez">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Cómo montar tu repositorio NPM privado con Sinopia"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Blog personal de David López, programador web en Xepient Solutions. Aquí podrás encontrar artículos relacionados con la programación web, herramientas y otras reflexiones." />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Eat&amp;Code"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="http://eatandcode.es/images/sinopia-web.png" />
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Cómo montar tu repositorio NPM privado con Sinopia - Eat&amp;Code</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+	
+	
+		<link rel="amphtml" href="http://eatandcode.es/2016/06/07/Como-montar-tu-repositorio-npm-privado-con-sinopia/amp/index.html">
+	
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-73435519-2', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Eat&Code</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Inicio
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archivos
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://twitter.com/DavidCehegin">
+                            
+                                &nbsp;<i class="fa fa-twitter fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://eatandcode.es/images/blog-header.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Cómo montar tu repositorio NPM privado con Sinopia</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        07-06-2016
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Sinopia/">#Sinopia</a> <a href="/tags/npm/">#npm</a> <a href="/tags/repositorio/">#repositorio</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/Node-js/">Node.js</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Esta tarde, un amigo me ha preguntado si conocía algún símil de “<a href="http://www.sonatype.org/nexus/" title="Página oficial de Nexus" target="_blank" rel="external">Nexus</a>“ para <strong>node.js</strong>, con el que poder gestionar las versiones de sus librerías y componentes privados. Me resulta curioso, ya que hace unas pocas semanas yo también estuve investigando al respecto. Aunque no es exactamente un nexus, el propio gestor de paquetes NPM sirve para precisamente eso, pero el problema es que si publicas un componente al repositorio NPM central, éste será públicamente accesible por todo el mundo. Por supuesto, siempre puedes contratar la versión <a href="https://www.npmjs.com/enterprise" title="Versión Enterprise de NPM" target="_blank" rel="external">Enterprise de NPM</a> y olvidarte de todo lo que viene a continuación. Pero si no te sobra la pasta, probablemente prefieras seguir leyendo para ver qué soluciones alternativas gratuitas hay.</p>
+<p>Una alternativa podría ser aprovechar la capacidad de NPM de funcionar con repositorios de GitHub. La idea sería crear un repositorio privado en GitHub y almacenar ahí nuestros componentes privados que usaremos en otras partes de nuestra aplicación. De hecho, no es necesario disponer de un repositorio privado para cada componente, como se explica <a href="http://www.zerothedragon.com/737/repositorio-con-multiples-paquetes-de-node/" title="Zero the dragon" target="_blank" rel="external">en esta página</a>. Aunque puede servirnos para salir del paso, personalmente me gusta mucho más otra alternativa que es más sencilla y transparente a la hora de trabajar: <a href="https://github.com/rlidwka/sinopia" title="Ver Sinopia en GitHub" target="_blank" rel="external">Sinopia</a>.</p>
+<p>NOTA: he leído que existen otras alternativas como <a href="https://github.com/mbrevoort/node-reggie" title="Ver Reggie en GitHub" target="_blank" rel="external">Reggie</a> o <a href="https://github.com/krakenjs/kappa" title="Ver Kappa en GitHub" target="_blank" rel="external">Kappa</a>, pero personalmente sólo he llegado a probar Sinopia.</p>
+<h2 id="Sinopia-un-proxy-entre-NPM-Central-y-tu-entorno-de-desarrollo"><a href="#Sinopia-un-proxy-entre-NPM-Central-y-tu-entorno-de-desarrollo" class="headerlink" title="Sinopia, un proxy entre NPM Central y tu entorno de desarrollo."></a>Sinopia, un proxy entre NPM Central y tu entorno de desarrollo.</h2><p>Si trabajas en un equipo de varios programadores, probablemente quieras disponer de un equipo central en el que poder ubicar las versiones de los componentes y librerías Node.js que vayáis creando. Desde ese equipo central, los programadores nos descargaremos tanto los paquetes públicos NPM como los nuestros privados. Sinopia hará las dotes de “proxy” entre NPM Central y nuestros equipos de desarrollo, cogiendo los paquetes NPM de su memoria local o descargándoselos de NPM Central en caso de no existir. Nótese que además esto nos puede dar la ventaja de acelerar los tiempos de descarga y prevenir los problemas que nos podría ocasionar una caída temporal de NPM Central (aunque seamos realistas, su velocidad de descarga y su disponibilidad son realmente buenos y rara vez tendremos problemas).</p>
+<p><img src="/images/sinopia.png" alt="Diagrama de un proxy Sinopia" title="Diagrama de un proxy Sinopia"><span class="image-caption">Diagrama de un proxy Sinopia</span></p>
+<p>En el esquema anterior podemos ver donde se ubicaría Sinopia. Cabe destacar que, para hacer pruebas lo podemos instalar en nuestra propia máquina de desarrollo (de hecho, así lo he hecho yo en el ejemplo que podré a continuación).</p>
+<h2 id="Como-configurar-Sinopia-de-manera-sencilla-en-Windows"><a href="#Como-configurar-Sinopia-de-manera-sencilla-en-Windows" class="headerlink" title="Cómo configurar Sinopia de manera sencilla en Windows"></a>Cómo configurar Sinopia de manera sencilla en Windows</h2><p>En primer lugar, abrimos una consola e instalamos Sinopia de manera global:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g sinopia</div></pre></td></tr></table></figure></p>
+<p>No os preocupéis si veis algunos errores en la consola, es normal.<br>A continuación, sencillamente lanzamos sinopia con el siguiente comando:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sinopia</div></pre></td></tr></table></figure></p>
+<p><img src="/images/sinopia-cmd.png" alt="Resultado por consola al lanzar Sinopia" title="Resultado por consola al lanzar Sinopia"><span class="image-caption">Resultado por consola al lanzar Sinopia</span></p>
+<p>Al ser la primera vez que lanzamos, nos creará automáticamente un fichero de configuración bajo nuestra carpeta de usuario <em>/AppData/Roaming/sinopia/config.yaml</em>. También se creará una carpeta vecina llamada <em>storage</em>, que será donde Sinopia almacenará los paquetes NPM públicos y privados. Podéis modificar el archivo de configuración para configurar a vuestro antojo el comportamiento de Sinopia. Para una guía completa y detallada, consultad la documentación oficial en GitHub.</p>
+<p>Con esto, <strong>ya tendremos listo el servidor de Sinopia</strong> para hacer de proxy con los paquetes NPM públicos y para almacenar nuestras librerías privadas. De hecho, podemos incluso navegar por una interfaz web local bastante chula, muy similar a la de NPM Central, donde podremos consultar nuestros paquetes privados. Dicha interfaz se encuentra en <a href="http://localhost:4873/" target="_blank" rel="external">http://localhost:4873/</a>.</p>
+<p><img src="/images/sinopia-web.png" alt="Interfaz web de Sinopia" title="Interfaz web de Sinopia"><span class="image-caption">Interfaz web de Sinopia</span></p>
+<p>Pero nos falta una última cosa por configurar; necesitamos decirle a NPM que debe obtener y publicar los paquetes de nuestro proxy Sinopia en vez de NPM Central. Para ello, abrimos otra consola y ejecutamos el siguiente comando:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm set registry http://localhost:4873</div></pre></td></tr></table></figure></p>
+<p>Esto establecerá esa configuración en el NPM de nuestra máquina. Obviamente, en caso de estar Sinopia ubicada en otro equipo, tendremos que indicar ahí la IP de dicho equipo en lugar de <em>localhost</em>. Además, tendremos que configurar un usuario npm que pueda realizar “commits” de los paquetes privados a nuestro proxy. Ejecutamos el siguiente comando en la nueva consola que hemos abierto antes:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm adduser --registry http://localhost:4873</div></pre></td></tr></table></figure></p>
+<p><img src="/images/sinopia-user.png" alt="Configuración del usuario en el registro de NPM" title="Configuración del usuario en el registro de NPM"><span class="image-caption">Configuración del usuario en el registro de NPM</span></p>
+<h2 id="Ejemplo-de-uso"><a href="#Ejemplo-de-uso" class="headerlink" title="Ejemplo de uso"></a>Ejemplo de uso</h2><p>Vamos a crear una aplicación de pruebas para ver que funciona correctamente. Creamos una carpeta llamada “test” en cualquier lugar de nuestro equipo, y en su interior ejecutamos el siguiente comando:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm init</div></pre></td></tr></table></figure></p>
+<p>Tras la serie de preguntas típicas, se nos habrá creado el fichero project.json, con los datos que hemos introducido antes en su interior. Para este ejemplo, yo he establecido la siguiente configuración:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"eat-and-code"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"A simple testing package"</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Ahora vamos a añadirle una dependencia de un paquete público de NPM, por ejemplo, el súper útil paquete <a href="https://www.npmjs.com/package/status-cat-bot" title="Ver status-cat-bot" target="_blank" rel="external">status-cat-bot</a>. En esta misma carpeta, ejecutamos lo siguiente:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install http-status-cats --save</div></pre></td></tr></table></figure></p>
+<p>Si lo hemos hecho todo correctamente, en el interior de la carpeta de Sinopia/storage debería haberse creado una carpeta con la librería http-status-cats. Recordemos que esta librería es descargada por Sinopia desde el repositorio central de NPM.</p>
+<p><img src="/images/sinopia-cache.png" alt="Carpetas descargadas por la caché de Sinopia" title="Visualización de las carpetas descargadas por la caché de Sinopia"><span class="image-caption">Carpetas descargadas por la caché de Sinopia</span></p>
+<p>Ahora vamos a probar la subida de nuestra librería “test” que hemos creado. Sencillamente tenemos que ejecutar el siguiente comando:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm publish</div></pre></td></tr></table></figure></p>
+<p>Nuestro paquete NPM privado de test se habrá publicado sólo a nuestro proxy Sinopia, y no a NPM Central, y sólo aquellos compañeros de trabajo que tengan acceso a ese proxy podrá utilizar esta librería. Podemos consultarlo desde la interfaz web:</p>
+<p><img src="/images/sinopia-web-example.png" alt="Ejemplo de nuestra librería publicada sólo a nuestro repositorio privado" title="Ejemplo de nuestra librería publicada sólo a nuestro repositorio privado"><span class="image-caption">Ejemplo de nuestra librería publicada sólo a nuestro repositorio privado</span></p>
+<p><strong>NOTA IMPORTANTE</strong></p>
+<p>Si queremos volver a dejar la configuración de NPM para que haga uso del repositorio NPM Central, ejecutamos esto en una ventana de comandos:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm config set registry https://registry.npmjs.org</div></pre></td></tr></table></figure></p>
+
+
+                
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-574964d40b587768"></script>
+
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_sharing_toolbox"></div>
+                
+
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comentarios:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                        <li>
+                            <a href="https://twitter.com/DavidCehegin" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://www.linkedin.com/in/davloperez" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'eatandcode';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>

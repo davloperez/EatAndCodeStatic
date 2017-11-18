@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Blog personal de David López, programador web en Xepient Solutions. Aquí podrás encontrar artículos relacionados con la programación web, herramientas y otras reflexiones.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="David López Pérez">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Soluciones a la captura de SVG con html2canvas"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Blog personal de David López, programador web en Xepient Solutions. Aquí podrás encontrar artículos relacionados con la programación web, herramientas y otras reflexiones." />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Eat&amp;Code"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="http://eatandcode.es/images/html2canvas-portada.jpg" />
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Soluciones a la captura de SVG con html2canvas - Eat&amp;Code</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+	
+	
+		<link rel="amphtml" href="http://eatandcode.es/2017/08/12/Soluciones-a-la-captura-de-svg-con-html2canvas/amp/index.html">
+	
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-73435519-2', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Eat&Code</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Inicio
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archivos
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://twitter.com/DavidCehegin">
+                            
+                                &nbsp;<i class="fa fa-twitter fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://eatandcode.es/images/blog-header.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Soluciones a la captura de SVG con html2canvas</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        12-08-2017
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/javascript/">#javascript</a> <a href="/tags/html2canvas/">#html2canvas</a> <a href="/tags/svg/">#svg</a> <a href="/tags/jsplumb/">#jsplumb</a> <a href="/tags/angularjs/">#angularjs</a> <a href="/tags/material/">#material</a> <a href="/tags/design/">#design</a> <a href="/tags/icon/">#icon</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/Javascript/">Javascript</a>/ <a href="/categories/Javascript/Material-Design-Icons/">Material Design Icons</a>/ <a href="/categories/Javascript/Material-Design-Icons/JsPlumb/">JsPlumb</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Hace poco me he visto en la necesidad de tomar capturas de pantalla de una aplicación web mediante javascript, y almacenar dichas capturas como imágenes JPG de manera automática en el servidor.</p>
+<p><img src="/images/html2canvas-portada.jpg" alt="html2canvas, imagen de la web del proyecto"><span class="image-caption">html2canvas, imagen de la web del proyecto</span></p>
+<p>No hay muchas opciones donde elegir actualmente si quieres poder ejecutar el código que captura la imagen en el cliente, y menos que sean de uso gratuito. La opción más conocida es <a href="https://html2canvas.hertzen.com/" title="html2canvas - Screenshots with javascript" target="_blank" rel="external">html2canvas</a>. Esta librería es realmente facil de usar; simplemente le proporcionas un elemento del DOM, y la librería te devuelve una imagen en base64. En realidad, suele funcionar bastante bien, pero cuando el nodo del DOM a capturar contiene elementos SVG, existen varios problemas para hacerlo funcionar correctamente. En concreto, los problemas los tuve con los elementos SVG de <a href="https://materialdesignicons.com/" title="Material Design Icons" target="_blank" rel="external">Material Design Icons</a> usados con el atributo ‘md-svg-icon’, pero sobre todo con las flechas que genera la librería <a href="https://jsplumbtoolkit.com/" title="jsPlumb Toolkit - build Flowcharts, Diagrams and connectivity based applications fast" target="_blank" rel="external">JsPlumb</a>.</p>
+<p>Si html2canvas no captura correctamente vuestros elementos SVG, probad con el siguiente método.</p>
+<ol>
+<li>(opcional) Si es posible, cread un clon del elemento del DOM cuya imagen queréis capturar. Para ello os podéis servir de la función <a href="https://api.jquery.com/clone/" title="jQuery API" target="_blank" rel="external">.clone()</a> de jQuery o similares.</li>
+<li>(opcional) Si habéis creado un clon como he dicho en el punto anterior, deberéis añadirlo al DOM en algún punto donde esté visible (es decir, que no esté bajo ningún nodo con <em>display: none</em>). En mi caso, lo pude poner como primer elemento hijo del &lt;body&gt;, ya que el resto de la web estaba alojada en otro &lt;div&gt; que ocupaba el 100% del ancho y del alto, y tenía un z-index superior.</li>
+<li>Debéis aseguraros de que la etiqueta &lt;svg&gt; y todas las etiquetas interiores como &lt;path&gt; tengan <strong>exactamente</strong> el atributo <code>xmlns=&quot;http://www.w3.org/2000/svg&quot;</code>. En mi caso, estaba usando una versión antigua de JsPlumb que creaba las flechas con un elemento SVG que tenía el atributo <code>xmlns=&quot;http://www.w3.org/1999/xhtml&quot;</code>, el cual no parece funcionar bien con html2canvas.</li>
+<li>La anchura y altura del SVG deben estar especificado en píxeles en los atributos <code>width</code> y <code>height</code> del elemento (no mediante CSS ni el atributo <code>style</code>). Si utilizáis porcentajes para la anchura y altura, debéis tener en cuenta que se comportará como cualquier elemento con <code>display:block</code>. Este es uno de los problemas que ocurren si utilizáis los iconos de Material Design Icons mediante un SVG embebido con el atributo <code>md-svg-icon</code> (estos SVG se crean con las propiedades <code>width=&quot;100%&quot;</code> y <code>height=&quot;100%&quot;</code>).</li>
+<li>El posicionamiento de los SVG no puede ser absoluto. En el caso de que tengáis un elemento SVG con <code>position: absolute</code>, ésto no se pintará correctamente con html2canvas. Para solucionarlo, podéis envolver los elementos SVG con un &lt;span&gt; que sí tenga posicionamiento absoluto (copiando el posicionamiento top, bottom, left o right del SVG), y borrando del SVG su <code>position: absolute</code> con los correspondientes estilos top, bottom, left o right que tuviese. Para envolver los SVG, podéis ayudaros de la función <a href="https://api.jquery.com/wrap/" title="jQuery API" target="_blank" rel="external">.wrap()</a> de jQuery.</li>
+<li>La técnica de <code>fill:currentColor</code> para <a href="https://css-tricks.com/cascading-svg-fill-color/" title="Cascading SVG Fill Color" target="_blank" rel="external">mostrar el icono SVG con el mismo color que la fuente</a> tampoco funciona con html2canvas. Deberéis asignar <em>progamaticalmente</em> el atributo <code>fill</code> del SVG con un color HTML real.</li>
+</ol>
+<p>A continuación os pongo un fragmento simplificado de lo que he tenido que hacer para obtener unas capturas 100% iguales al HTML original, cuando éste tenía elementos SVG creados por JsPlumb e iconos de angularjs de Material Design Icons. Suponemos que <code>$clone</code> es el objecto jQuery que contiene el clon del HTML cuya imagen queremos obtener.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">$clone.find(<span class="string">'.jtk-connector'</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// for every SVG element created by JsPlumb for connections...</span></div><div class="line">  <span class="keyword">var</span> left = <span class="built_in">parseInt</span>(<span class="keyword">this</span>.style.left, <span class="number">10</span>) + <span class="string">'px'</span>;</div><div class="line">  <span class="keyword">var</span> top = <span class="built_in">parseInt</span>(<span class="keyword">this</span>.style.top, <span class="number">10</span>) + <span class="string">'px'</span>;</div><div class="line">  <span class="keyword">this</span>.removeAttribute(<span class="string">'style'</span>);</div><div class="line">  <span class="keyword">this</span>.removeAttribute(<span class="string">'position'</span>);</div><div class="line">  <span class="keyword">this</span>.setAttribute(<span class="string">'width'</span>, <span class="built_in">parseInt</span>(<span class="keyword">this</span>.getAttribute(<span class="string">'width'</span>), <span class="number">10</span>)  + <span class="string">'px'</span>);</div><div class="line">  <span class="keyword">this</span>.setAttribute(<span class="string">'height'</span>, <span class="built_in">parseInt</span>(<span class="keyword">this</span>.getAttribute(<span class="string">'height'</span>), <span class="number">10</span>) + <span class="string">'px'</span>);</div><div class="line">  <span class="keyword">this</span>.setAttribute(<span class="string">'preserveAspectRatio'</span>, <span class="string">'xMidYMid meet'</span>);</div><div class="line">  <span class="keyword">this</span>.setAttribute(<span class="string">'xmlns'</span>, <span class="string">'http://www.w3.org/2000/svg'</span>);</div><div class="line">  <span class="comment">// this.children[0] is the path for connection line</span></div><div class="line">  <span class="comment">// this.children[1] is the path for connection arrow shape</span></div><div class="line">  <span class="keyword">this</span>.children[<span class="number">0</span>].setAttribute(<span class="string">'xmlns'</span>, <span class="string">'http://www.w3.org/2000/svg'</span>); </div><div class="line">  <span class="keyword">this</span>.children[<span class="number">1</span>].setAttribute(<span class="string">'xmlns'</span>, <span class="string">'http://www.w3.org/2000/svg'</span>);</div><div class="line">  <span class="keyword">this</span>.setAttribute(<span class="string">'viewbox'</span>, <span class="string">'0 0 '</span> + <span class="built_in">parseInt</span>(<span class="keyword">this</span>.getAttribute(<span class="string">'width'</span>), <span class="number">10</span>) + <span class="string">' '</span> + <span class="built_in">parseInt</span>(<span class="keyword">this</span>.getAttribute(<span class="string">'height'</span>), <span class="number">10</span>));</div><div class="line">  <span class="keyword">this</span>.children[<span class="number">0</span>].setAttribute(<span class="string">'stroke-width'</span>, <span class="string">'2px'</span>);</div><div class="line">  <span class="keyword">this</span>.children[<span class="number">0</span>].setAttribute(<span class="string">'stroke'</span>, <span class="string">'#c9c9c9'</span>);</div><div class="line">  <span class="keyword">this</span>.children[<span class="number">1</span>].setAttribute(<span class="string">'fill'</span>, <span class="string">'#c9c9c9'</span>);</div><div class="line">  <span class="keyword">this</span>.children[<span class="number">1</span>].setAttribute(<span class="string">'stroke'</span>, <span class="string">'#c9c9c9'</span>);</div><div class="line">  $clone.find(<span class="keyword">this</span>).wrap(<span class="string">'&lt;span style="position: absolute; left: '</span> + left + <span class="string">'; top: '</span> + top + <span class="string">';"&gt;&lt;/span&gt;'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Seguramente hay alguna forma mejor y más eficiente para solventar este problema, pero este workaround puedo asegurar que funciona correctamente.</p>
+<p>Si conocéis algún truco más relacionado con html2canvas, no dudéis en compartirlo en los comentarios.</p>
+
+
+                
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-574964d40b587768"></script>
+
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_sharing_toolbox"></div>
+                
+
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comentarios:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                        <li>
+                            <a href="https://twitter.com/DavidCehegin" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://www.linkedin.com/in/davloperez" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'eatandcode';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>

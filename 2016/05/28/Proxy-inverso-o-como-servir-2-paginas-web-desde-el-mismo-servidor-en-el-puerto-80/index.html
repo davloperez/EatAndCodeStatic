@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Blog personal de David López, programador web en Xepient Solutions. Aquí podrás encontrar artículos relacionados con la programación web, herramientas y otras reflexiones.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="David López Pérez">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Proxy inverso, o cómo servir 2 páginas web desde el mismo servidor en el puerto 80"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Blog personal de David López, programador web en Xepient Solutions. Aquí podrás encontrar artículos relacionados con la programación web, herramientas y otras reflexiones." />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Eat&amp;Code"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="http://eatandcode.es/images/squid-basic-reverse-proxy.png" />
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Proxy inverso, o cómo servir 2 páginas web desde el mismo servidor en el puerto 80 - Eat&amp;Code</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+	
+	
+		<link rel="amphtml" href="http://eatandcode.es/2016/05/28/Proxy-inverso-o-como-servir-2-paginas-web-desde-el-mismo-servidor-en-el-puerto-80/amp/index.html">
+	
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-73435519-2', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Eat&Code</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Inicio
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archivos
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://twitter.com/DavidCehegin">
+                            
+                                &nbsp;<i class="fa fa-twitter fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://eatandcode.es/images/blog-header.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Proxy inverso, o cómo servir 2 páginas web desde el mismo servidor en el puerto 80</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        28-05-2016
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/proxy-inverso/">#proxy inverso</a> <a href="/tags/servidor/">#servidor</a> <a href="/tags/Squid/">#Squid</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/sistemas/">sistemas</a>/ <a href="/categories/sistemas/proxy/">proxy</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Hace unos días me ví en la necesidad de publicar dos sitios web (accesibles en el puerto 80) en un equipo con sólo una IP pública. Normalmente, si los dos sitios web están basados en la misma tecnología y alojados en el mismo servidor web (como IIS o Apache), suele ser suficiente con configurar adecuadamente las opciones que estos programas proveen. Por ejemplo, en <a href="http://www.sherweb.com/blog/how-to-set-up-site-bindings-in-internet-information-services-iis/" title="Blog de SherWeb" target="_blank" rel="external">este post</a> explica cómo hacerlo para IIS. O también en Apache tenemos los <a href="https://httpd.apache.org/docs/current/vhosts/examples.html" title="Documentación oficial de apache.org" target="_blank" rel="external">Virtual Hosts</a> con los que podemos conseguir el mismo efecto.</p>
+<p>Sin embargo, el problema se complica cuando los dos sitios web están implementados en tecnología diferente, como era mi caso. Un sitio web corría sobre Node.js y otro sobre ASP.NET con IIS. Cuando inicias un sitio web con uno de estos programas, ya no puedes iniciar el otro, ya que el puerto 80 ha sido ocupado por el primero. </p>
+<p>Aquí es donde entra en juego un <a href="https://en.wikipedia.org/wiki/Reverse_proxy" title="Ver en Wikipedia" target="_blank" rel="external">proxy inverso</a>, como por ejemplo <a href="http://www.squid-cache.org/" title="Sitio oficial de Squid" target="_blank" rel="external">Squid</a>.</p>
+<p><img src="/images/squid-basic-reverse-proxy.png" alt="Esquema de funcionamiento de un proxy inverso" title="Esquema de funcionamiento de un proxy inverso"><span class="image-caption">Esquema de funcionamiento de un proxy inverso</span></p>
+<p>La idea es la siguiente: el único programa que escuchará en el puerto 80 será nuestro proxy inverso. Así no habrá problemas de compartición de puertos. Por otro lado, configuraremos Node.js e IIS para que escuchen en cualquier puerto libre que haya en el equipo, por ejemplo el 4000 y el 8000 respectivamente. Y por último, configuraremos el proxy inverso para que mapee las peticiones que vayan dirigidas a <em>sitio1.com</em> hacia <em>localhost:4000</em>, y las peticiones de <em>sitio2.com</em> hacia <em>localhost:8000</em>.</p>
+<p>NOTA: aunque en este ejemplo estamos utilizando el mismo equipo para albergar tanto Squid, como los servidores IIS y Node.js, lo aconsejable sería poder ubicar cada uno de estos procesos en una máquina diferente (siendo el equipo de Squid el único que contiene la IP pública. Los equipos de Node.js e IIS sólo necesitarían estar conectados con el de Squid con IPs privadas). Pero si los dos sitios web no requieren muchos recursos de memoria o CPU, podemos ahorrarnos el coste de esas múltiples máquinas, ubicando todos los procesos en una.</p>
+<h1 id="Como-configurar-Squid-en-Windows"><a href="#Como-configurar-Squid-en-Windows" class="headerlink" title="Cómo configurar Squid en Windows"></a>Cómo configurar Squid en Windows</h1><ol>
+<li>Descargar el binario de Squid para Windows de la <a href="http://wiki.squid-cache.org/SquidFaq/BinaryPackages" title="Binarios de Squid" target="_blank" rel="external">página oficial</a>.</li>
+<li><p>Instalarlo en nuestro servidor (la instalación es trivial). Tras la instalación, deberíamos ver el icono en el área de notificación de Windows.</p>
+<p><img src="/images/squid-installed.png" alt="Squid se iniciará como un servicio" title="Squid se iniciará como un servicio"><span class="image-caption">Squid se iniciará como un servicio</span></p>
+</li>
+<li><p>Arrancamos los servidores Node.js e IIS, escuchando en las direcciones <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> y <a href="http://localhost:8000" target="_blank" rel="external">http://localhost:8000</a> respectivamente.</p>
+</li>
+<li>Hacemos clic sobre el icono de Squid en el área de notificación, y seleccionamos “Open Squid Configuration”. Se nos abrirá el fichero <strong>squid.conf</strong> en el bloc de notas.</li>
+<li><p>Borramos todo el contenido del fichero, y en su lugar pegamos la siguiente configuración:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># Hacemos que Squid escuche en el puerto 80</div><div class="line">http_port 80 accel</div><div class="line"></div><div class="line"># Configuramos el mapeo de sitio1.com al puerto 127.0.0.1:4000</div><div class="line">cache_peer 127.0.0.1 parent 4000 0 no-query originserver name=nodeJsAccel</div><div class="line">acl sitio1Sites dstdomain sitio1.com</div><div class="line">http_access allow sitio1Sites</div><div class="line">cache_peer_access nodeJsAccel allow sitio1Sites</div><div class="line">cache_peer_access nodeJsAccel deny all</div><div class="line"></div><div class="line"># Configuramos el mapeo de sitio2.com al puerto 127.0.0.1:8000</div><div class="line">cache_peer 127.0.0.1 parent 8000 0 no-query originserver name=iisAccel</div><div class="line">acl sitio2Sites dstdomain sitio2.com</div><div class="line">http_access allow sitio2Sites</div><div class="line">cache_peer_access iisAccel allow sitio2Sites</div><div class="line">cache_peer_access iisAccel deny all</div></pre></td></tr></table></figure>
+</li>
+<li><p>Reiniciamos Squid para que cargue la nueva configuración. Para ello, hacemos clic en el icono del área de notificación de Windows, “Stop Squid service”, y después “Start Squid service”.</p>
+</li>
+</ol>
+<p>Si lo hemos hecho todo correctamente, ahora podremos acceder a <a href="http://sition1.com" target="_blank" rel="external">http://sition1.com</a> y Squid nos redirigirá de manera totalmente transparente hacia el servidor Node.js que escucha en el puerto 4000. Lo mismo con <a href="http://sition2.com" target="_blank" rel="external">http://sition2.com</a>, que nos redirigirá hacia el servidor IIS que escucha el puerto 8000. Todo esto sucede de manera interna en nuestro servidor, y el usuario final no notará diferencia algura respecto a si tuviésemos los sitios web corriendo en equipos diferentes. Obviamente, en el paso <strong>5</strong> deberemos sustituir <em>sition1.com</em> y <em>sition2.com</em> por nuestros dominios reales, así como los puertos privados en los que tengamos corriendo nuestras aplicaciones web. Además, podemos añadir tantos mapeos a Squid como queramos, permitiéndonos tener multitud de sitios web en un mismo equipo, todos ellos accesibles desde el puerto 80.</p>
+<p>Como apunte final, decir que Squid sirve para muchas otras cosas además de un simple proxy inverso. Yo aún estoy verde con este programa, pero espero aprender más sobre él y mostrar algunos de sus prácticos usos.</p>
+
+
+                
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-574964d40b587768"></script>
+
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_sharing_toolbox"></div>
+                
+
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comentarios:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                        <li>
+                            <a href="https://twitter.com/DavidCehegin" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://www.linkedin.com/in/davloperez" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'eatandcode';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>

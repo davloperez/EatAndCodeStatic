@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Blog personal de David López, programador web en Xepient Solutions. Aquí podrás encontrar artículos relacionados con la programación web, herramientas y otras reflexiones.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="David López Pérez">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Dependencias con NPM. Trucos y trampas."/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Blog personal de David López, programador web en Xepient Solutions. Aquí podrás encontrar artículos relacionados con la programación web, herramientas y otras reflexiones." />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Eat&amp;Code"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="http://eatandcode.es/images/npm-logo.png" />
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Dependencias con NPM. Trucos y trampas. - Eat&amp;Code</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+	
+	
+		<link rel="amphtml" href="http://eatandcode.es/2016/08/13/dependencias-con-npm-trucos-y-trampas/amp/index.html">
+	
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-73435519-2', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Eat&Code</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Inicio
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archivos
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://twitter.com/DavidCehegin">
+                            
+                                &nbsp;<i class="fa fa-twitter fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://eatandcode.es/images/blog-header.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Dependencias con NPM. Trucos y trampas.</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        13-08-2016
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/npm/">#npm</a> <a href="/tags/trucos/">#trucos</a> <a href="/tags/trampas/">#trampas</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/node-js/">node.js</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Node.js utiliza su propia implementación de <a href="https://nodejs.org/api/modules.html#modules_modules" title="Node.js Module Pattern" target="_blank" rel="external">Common.js</a> para el manejo de dependencias y módulos.<br>Todas las aplicaciones Node.js que hagamos (incluso la más sencilla) van a hacer uso de multitud de módulos para funcionar.<br>Estos módulos pueden ser <em>builtin</em>, propios del mismo Node.js, o pueden ser módulos de terceros; pero ambos funcionan exactamente igual a la hora de importarlos y usarlos en nuestras aplicaciones.<br>No es el objetivo de este artículo enseñar el funcionamiento, que podéis encontrar en cualquier guía “<em>get started</em>“ por la red, sino que iré un paso más allá y comentaré algunos de los trucos y trampas que me he encontrado en mi experiencia de desarrollo con Node.js.</p>
+<h1 id="Los-modulos-son-singleton…-pero-a-veces-no"><a href="#Los-modulos-son-singleton…-pero-a-veces-no" class="headerlink" title="Los módulos son singleton… pero a veces no!"></a>Los módulos son <em>singleton</em>… pero a veces no!</h1><p>Una de las primeras cosas que aprendemos en el desarrollo con Node.js es que cuando haces un <code>require(&#39;xyz&#39;)</code> por primera vez, el módulo es leído, procesado síncronamente y almacenado en memoria, y si posteriormente hacemos otro <code>require(&#39;xyz&#39;)</code> no se vuelve a procesar, sino que se hace uso del mismo módulo que ya existe en memoria cuando se cargó por primera vez.<br>Solemos llamar a este comportamiento como <em>singleton</em>, debido a su similitud con este patrón. De hecho, es muy facil implementar objetos <em>singleton</em> en Node.js gracias a Common.js.<br>Es más, NPM <strong>ni siquiera descargará</strong> el mismo módulo más de 1 vez en el caso de que ya se haya descargado previamente mediante otro módulo diferente que lo requiriese.<br>Podemos ver este comportamiento en el siguiente ejemplo.</p>
+<h2 id="Ejemplo-de-uso-singleton-de-un-modulo"><a href="#Ejemplo-de-uso-singleton-de-un-modulo" class="headerlink" title="Ejemplo de uso singleton de un módulo"></a>Ejemplo de uso <em>singleton</em> de un módulo</h2><p>Supongamos que tenemos una app con el siguiente <em>package.json</em>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">&quot;dependencies&quot;: &#123;</div><div class="line">  &quot;colors&quot;: &quot;^1.1.2&quot;,</div><div class="line">  &quot;esrol-logger&quot;: &quot;0.0.10&quot;</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>La app tiene 2 dependencias: el módulo <code>colors</code> y el módulo <code>esrol-logger</code>.<br>Este último, a su vez, tiene otras dos dependencias: <code>colors</code> y <code>debug</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">&quot;dependencies&quot;: &#123;</div><div class="line">  &quot;colors&quot;: &quot;^1.1.2&quot;,</div><div class="line">  &quot;debug&quot;: &quot;^2.2.0&quot;</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>Por tanto tenemos el siguiente escenario: tanto nuestra <code>app</code> como el módulo <code>esrol-logger</code> <strong>requieren</strong> del módulo <code>colors</code> para funcionar. O representado en forma de esquema:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">app</div><div class="line">├── colors                                                                                                               </div><div class="line">└─┬ esrol-logger   </div><div class="line">  ├── colors                                                                                                      </div><div class="line">  └── debug</div></pre></td></tr></table></figure></p>
+<p>Sin embargo, si hacemos <code>npm install</code> y luego un <code>npm list</code>, veremos lo que se ha instalado realmente.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">c:\Users\David\Proyectos\eatandcode-npm-dependency-example&gt;npm list                                                              </div><div class="line">app@1.0.0 c:\Users\David\Proyectos\eatandcode-npm-dependency-example                               </div><div class="line">├── colors@1.1.2                                                                                                                 </div><div class="line">└─┬ esrol-logger@0.0.10                                                                                                          </div><div class="line">  └─┬ debug@2.2.0                                                                                                                </div><div class="line">    └── ms@0.7.1</div></pre></td></tr></table></figure></p>
+<p>El módulo <code>colors</code> sólo se ha instalado una única vez.<br>Cuando el módulo <code>esrol-logger</code> quiera hacer uso del módulo <code>colors</code>, el manejador de dependencias de Node.js sabrá localizarlo en la carpeta node_modules de nuestra app.<br>Y lo que es más importante, dicho módulo sólo se cargará 1 única vez, y el resto de veces que se le haga un <code>require</code>, se obtendrá la instancia ya cargada en memoria.</p>
+<p>Para comprobar que realmente esto sucede así, vamos a llevar a cabo un pequeño <em>truco</em> que nos permitirá ver la cantidad de veces que se procesa el módulo <code>colors</code>.<br>Vamos a la carpeta <em>node_modules/colors/lib</em> y editamos el fichero <em>index.js</em>.<br>Este fichero es el punto de entrada por el que se empieza a procesar este módulo (indicado en el campo “main” de su <em>package.json</em>, más información <a href="https://docs.npmjs.com/files/package.json#main" title="Documentación oficial" target="_blank" rel="external">aquí</a> ).<br>Colocaremos un chivo que nos mostrará por consola un mensaje cuando se procese este fichero. Para ello, añadimos al final del fichero lo siguiente:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'Colors module has been processed'</span>);</div></pre></td></tr></table></figure></p>
+<p>Guardamos el fichero, y ejecutamos nuestra app, que va a hacer uso directamente de los módulos <code>colors</code> y <code>esrol-logger</code>. Nuestra app consta simplemente del siguiente fichero principal:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = <span class="built_in">require</span>(<span class="string">'colors'</span>);</div><div class="line"><span class="keyword">var</span> logger = <span class="built_in">require</span>(<span class="string">'esrol-logger'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'App finished'</span>);</div></pre></td></tr></table></figure></p>
+<p>Tras ejecutarla, obtendremos por consola los siguientes mensajes:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Colors module has been processed                                                                                                 </div><div class="line">App finished</div></pre></td></tr></table></figure></p>
+<p>Como podemos ver, el módulo <code>colors</code> sólo se ha procesado una única vez, a pesar de haber sido <em>required</em> tanto por nuestra app como por el módulo <code>esrol-logger</code>.<br>Sin embargo, es posible que, bajo determinadas circunstancias, el módulo <code>colors</code> se procese dos veces, como se explica en el siguiente ejemplo.</p>
+<h2 id="Ejemplo-de-multiples-procesados-del-mismo-modulo"><a href="#Ejemplo-de-multiples-procesados-del-mismo-modulo" class="headerlink" title="Ejemplo de múltiples procesados del mismo módulo."></a>Ejemplo de múltiples procesados del mismo módulo.</h2><p>Ahora supongamos que tenemos la misma aplicación, pero esta vez vamos a “forzar” a nuestra app a utilizar una versión de <code>colors</code> diferente a la que utiliza el módulo <code>esrol-logger</code>.<br><code>esrol-logger</code> require una versión del módulo <code>colors</code> igual o superior a la 1.1.2.<br>Vamos a modificar el package.json de nuestra app para establecer como dependencia la versión exacta 1.0.0.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">&quot;dependencies&quot;: &#123;</div><div class="line">  &quot;colors&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;esrol-logger&quot;: &quot;0.0.10&quot;</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>Borramos la carpeta node_modules por completo, y volvemos a ejecutar <code>npm install</code> y luego <code>npm list</code>, donde veremos que se ha descargado el siguiente grafo de dependencias.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">c:\Users\David\Proyectos\eatandcode-npm-dependency-example&gt;npm list                                                              </div><div class="line">app@1.0.0 c:\Users\David\Proyectos\eatandcode-npm-dependency-example                                                             </div><div class="line">├── colors@1.0.0                                                                                                                 </div><div class="line">└─┬ esrol-logger@0.0.10                                                                                                          </div><div class="line">  ├── colors@1.1.2                                                                                                               </div><div class="line">  └─┬ debug@2.2.0                                                                                                                </div><div class="line">    └── ms@0.7.1</div></pre></td></tr></table></figure></p>
+<p>Si os fijáis bien, el módulo <code>colors</code> se ha descargado 2 veces, una para la app (versión 1.0.0) y otra como dependencia de <code>esrol-logger</code> (versión 1.1.2). ¿qué implica esto?<br>Pues bien, ahora al arrancar nuestra app, cabe la posibilidad de que se procese dos veces el módulo <code>colors</code>, y de que ambas <em>versiones</em> coexistan en memoria (como si fueran dos singleton independientes).<br>Y esto <strong>va a depender de dónde se haga el <code>require(&#39;colors&#39;)</code></strong>. Si se realiza desde nuestra app, obtendremos la instancia del módulo versión 1.0.0, mientras que si se realizar desde dentro de <code>esrol-logger</code>, obtendremos la instancia versión 1.1.2.</p>
+<p>Hagamos una prueba similar a la anterior para corroborar esto.<br>Modificamos, al igual que hicimos antes, los ficheros <em>index.js</em> que hay en las carpetas <em>node_modules/colors/lib</em> de <strong>ambos</strong> módulos <code>colors</code>, añadiéndole la líneas siguientes al final de cada cada uno:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'Colors module 1.0.0 has been processed'</span>);</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'Colors module 1.1.2 has been processed'</span>);</div></pre></td></tr></table></figure>
+<p>Después simplemente ejecutamos de nuevo nuestra app. Y, sorprendentemente obtendremos lo siguiente por consola:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Colors module 1.0.0 has been processed                                                                                           </div><div class="line">Colors module 1.1.2 has been processed                                                                                           </div><div class="line">App finished</div></pre></td></tr></table></figure></p>
+<p>Lo que nos certifica que el mismo módulo <code>colors</code> ha sido procesado dos veces, una por cada una de las versiones diferentes que requiere nuestra aplicación en general.</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusión"></a>Conclusión</h1><p>Aunque en los ejemplos provistos anteriormente este problema de “múltiples singletons del mismo módulo” no sea demasiado grave (ya que no afecta para nada a la ejecución de nuestro programa), existen otras situaciones donde este problema se convierte en un bug realmente difícil de detectar y depurar. Un claro ejemplo de ello es el módulo <a href="http://mongoosejs.com/" title="Web oficial de mongoose" target="_blank" rel="external">mongoose</a>, que me trajo de cabeza durante unas horas hasta que finalmente dí con la tecla. El escenario era el siguiente:</p>
+<p>La app principal tenía una dependencia con una versión de mongoose diferente a la de otro módulo privado que habíamos creado a modo de <a href="https://es.wikipedia.org/wiki/Data_Access_Object" title="Data Access Object en Wikipedia" target="_blank" rel="external">DAO</a> para un modelo concreto de nuestro dominio.<br>En el app.js inicializábamos la conexión de mongoose con el servidor MongoDB, pero dicha conexión <strong>no aplicaba a la instancia de mongoose que cargaba nuestro módulo DAO</strong> debido al comportamiento que hemos visto anteriormente.<br>Como consecuencia, al intentar utilizar nuestro DAO, mongoose nos daba un error de que no se había inicializado ninguna conexión.</p>
+<p>La verdadera problemática aquí reside en los módulos que contienen datos u objetos “singleton” compartidos por toda la aplicación (como hace mongoose).</p>
+<p>Mi consejo: hay que tener mucho cuidado con las versiones de los módulos. Probablemente no sea mala idea hacer un <code>npm list</code> de nuestros módulos y ver si se están cargando varias instancias del mismo módulo.<br>En principio no debería pasar nada, pero si estos módulos contienen datos singleton compartidos por toda la aplicación, es posible que tengamos un problema grave en un futuro (si no lo tenemos ya).<br>Y por supuesto, si creáis un módulo propio, tratad siempre que sea posible de no tener datos singleton, sino sólo exponer funciones o constructores aislados.</p>
+<p>Podéis descargar el código fuente de los ejemplos <a href="https://github.com/davloperez/eatandcode-npm-dependency-example" title="Repositorio de ejemplo" target="_blank" rel="external">en este repositorio GitHub</a></p>
+
+
+                
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-574964d40b587768"></script>
+
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_sharing_toolbox"></div>
+                
+
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comentarios:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                        <li>
+                            <a href="https://twitter.com/DavidCehegin" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://www.linkedin.com/in/davloperez" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'eatandcode';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>

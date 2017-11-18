@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Blog personal de David López, programador web en Xepient Solutions. Aquí podrás encontrar artículos relacionados con la programación web, herramientas y otras reflexiones.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="David López Pérez">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="TypeScript 2, control del flujo basado en análisis de tipos"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Blog personal de David López, programador web en Xepient Solutions. Aquí podrás encontrar artículos relacionados con la programación web, herramientas y otras reflexiones." />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Eat&amp;Code"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="http://eatandcode.es/images/typescript.png" />
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>TypeScript 2, control del flujo basado en análisis de tipos - Eat&amp;Code</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+	
+	
+		<link rel="amphtml" href="http://eatandcode.es/2016/06/04/Typescript-2-control-del-flujo-basado-en-analisis-de-datos/amp/index.html">
+	
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-73435519-2', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Eat&Code</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Inicio
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archivos
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://twitter.com/DavidCehegin">
+                            
+                                &nbsp;<i class="fa fa-twitter fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://eatandcode.es/images/blog-header.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>TypeScript 2, control del flujo basado en análisis de tipos</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        04-06-2016
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Typescript-2/">#Typescript 2</a> <a href="/tags/Javascript/">#Javascript</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/Typescript/">Typescript</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Ayer estaba leyendo el blog de <a href="http://blog.koalite.com/" title="Koalite" target="_blank" rel="external">Juan María Hernández</a> cuando me encontré con un enlace muy interesante en su <a href="http://blog.koalite.com/2016/05/typescript-ahora-si/" title="Typescript ¿Ahora sí?" target="_blank" rel="external">revisión personal del lenguaje TypeScript</a>. Se trata de un vídeo de <a href="https://channel9.msdn.com/" title="Channel 9 de Microsoft" target="_blank" rel="external">Channel 9</a> en el que aparece Anders Hejlsberg comentando algunas novedades que traerá la próxima versión de TypeScript. Os aconsejo que veáis el vídeo, es muy interesante.</p>
+<iframe src="https://channel9.msdn.com/Blogs/Seth-Juarez/Anders-Hejlsberg-on-TypeScript-2/player" width="100%" height="424" allowfullscreen frameborder="0"></iframe>
+
+<p>Hejlsberg habla primero de TypeScript en general, y luego realiza un avance sobre algunas mejoras que traerá la versión 2 de este lenguaje. De estas mejoras, explica que traerá async y await compilable a ECMAScript 5, y la parte que más me llamó la atención, los tipos <em>nullables</em> con <strong>control del flujo basado en análisis de tipos</strong>.</p>
+<h2 id="Una-ayuda-para-evitar-los-errores-por-referencias-nulas"><a href="#Una-ayuda-para-evitar-los-errores-por-referencias-nulas" class="headerlink" title="Una ayuda para evitar los errores por referencias nulas"></a>Una ayuda para evitar los errores por referencias nulas</h2><p>El concepto <em>control del flujo basado en análisis de tipos</em> suena a algo muy complicado de entender, pero en realidad es algo que muchos de nosotros hemos deseado siempre tener en nuestro IDE como programadores. En palabras sencillas, se trata de que el compilador nos indique mientras escribimos el código de manera (casi) instantánea que estamos introduciendo un posible error de tipo <em>“Cannot read property ‘xxxx’ of null”</em> (o undefined). Aunque ya existían en el mercado algunos <em><a href="https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis" target="_blank" rel="external">Analyzers</a></em> de código que podíamos usar de manera externa o integrada en nuestro IDE, TypeScript 2 traerá esta funcionalidad consigo de manera “nativa”, lo cual es realmente sorprendente; pensad, que estaremos desarrollando en realidad con un lenguaje no tipado como es Javascript, en el que no sólamente se le han añadido “tipos” en una capa superior con TypeScript 1, sino que ahora seremos capaces de prevenir y anticiparnos a bugs y errores debido a la nulabilidad de esos tipos.</p>
+<p>Esto se entiende mucho mejor con un ejemplo sencillo. Usaré el mismo que propone en el vídeo superior.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x: number|null</span>)</span>&#123;</div><div class="line">	x.toString();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>En este ejemplo, el nuevo compilador de TypeScript 2 nos indicaría una advertencia de manera inmediata por el hecho de estar llamando al método “toString()” de una variable que podría ser null en tiempo de ejecución. Y lleva toda la razón. Sin embargo, si optamos por escribir nuestro código de esta manera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x: number|null</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(x !== <span class="literal">null</span>)&#123;</div><div class="line">        <span class="comment">// aquí sabemos que x jamás podrá ser null</span></div><div class="line">        x.toString();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        <span class="comment">// y aquí sabemos con certeza que x será en todo caso null</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>En este caso, la llamada a x.toString() nunca se puede llegar a ejecutar si x es null. Gracias al <em>control del flujo basado en análisis de tipos</em>, el compilador será lo suficientemente inteligente como para detectar estos casos, y no mostrará ninguna advertencia. ¡BUUMM!</p>
+<p>Este ha sido un ejemplo muy sencillo, pero lo que realmente me inquieta a mi es saber si de verdad va a funcionar en situaciones más complejas que se pueden dar en el código, como por ejemplo esta:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x: number|null</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> bar(x, (<span class="keyword">typeof</span> x === <span class="string">'number'</span>));</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">x: number|null, y: boolean</span>)</span>&#123;</div><div class="line">    <span class="keyword">while</span>(y)&#123;</div><div class="line">        <span class="comment">// en este bucle sólo entrará si x es un número y no es null</span></div><div class="line">        x.toString();</div><div class="line">        <span class="keyword">if</span>(x &gt; <span class="number">10</span>)&#123;</div><div class="line">            x = x - <span class="number">1</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            x = <span class="literal">null</span>;</div><div class="line">            y = <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Si a eso le sumamos algoritmos recursivos con varias funciones… la lógica se complica, y mucho. Lo que no llego a comprender del todo es cómo harán para que este mecanismo funcione sin tener que probar y, de hecho, ejecutar el algoritmo con todos los valores posibles de entrada, ya que eso creo que es inviable. Supongo que la solución estará relacionada con cómo funciona el compilador, pero me sorprende muchísimo hasta qué punto se puede llegar a inferir el comporamiento de una porción de código aleatorio.</p>
+<p>Habrá que ver como funciona (dicen que en los <a href="https://github.com/Microsoft/TypeScript/wiki/Nightly-drops" title="Nightly drops en GitHub" target="_blank" rel="external"><em>nightly builds</em></a> ya se puede probar esta funcionalidad), pero desde luego es una ayuda que me encantaría tener en mi trabajo diario.</p>
+
+
+                
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-574964d40b587768"></script>
+
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_sharing_toolbox"></div>
+                
+
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comentarios:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                        <li>
+                            <a href="https://twitter.com/DavidCehegin" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://www.linkedin.com/in/davloperez" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'eatandcode';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>
